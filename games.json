@@ -1,148 +1,18 @@
 [
   {
-    "id": "naruto",
-    "title": "Naruto Storm Generations",
+    "id": "naruto-storm-generations",
+    "name": "Naruto Storm Generations",
     "category": "Aventura",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 5,
-    "downloads": 5,
+    "platforms": "Android",
+    "minAndroid": "A confirmar",
+    "size": "A confirmar",
+    "mode": "Offline",
+    "language": "Inglês",
     "description": "Port de Naruto Storm Generations para Android. Confira os requisitos e a compatibilidade da versão.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🍥"
-  },
-  {
-    "id": "gta-sa",
-    "title": "GTA San Andreas",
-    "category": "Aventura",
-    "platforms": [
-      "Android",
-      "iOS",
-      "PC"
-    ],
     "cover": "",
-    "rating": 2,
-    "downloads": 2,
-    "description": "Grand Theft Auto: San Andreas. Disponibilidade conforme a versão e a plataforma.",
-    "android": "A confirmar",
-    "size": "A confirmar",
+    "screenshots": [],
     "apkUrl": "",
     "dataUrl": "",
-    "altUrl": "",
-    "icon": "🌴"
-  },
-  {
-    "id": "nfs-mw",
-    "title": "Need for Speed Most Wanted",
-    "category": "Corrida",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 2,
-    "downloads": 2,
-    "description": "Jogo de corrida da série Need for Speed.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🏎️"
-  },
-  {
-    "id": "nfsu2",
-    "title": "Need for Speed Underground 2",
-    "category": "Corrida",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 0,
-    "downloads": 0,
-    "description": "Clássico de corrida. Compatibilidade depende da versão publicada.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🚘"
-  },
-  {
-    "id": "tekken3",
-    "title": "Tekken 3 PORT APK",
-    "category": "Arcade",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 0,
-    "downloads": 0,
-    "description": "Versão identificada como Tekken 3 para Android. Verifique a origem do arquivo.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🥊"
-  },
-  {
-    "id": "forza2",
-    "title": "Forza Horizon 2",
-    "category": "Corrida",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 0,
-    "downloads": 0,
-    "description": "Projeto relacionado a Forza Horizon 2 para Android.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🏁"
-  },
-  {
-    "id": "woody",
-    "title": "Woody Woodpecker",
-    "category": "Aventura",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 0,
-    "downloads": 0,
-    "description": "Jogo do Pica-Pau. Confira a plataforma e versão.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🐦"
-  },
-  {
-    "id": "xhynv",
-    "title": "XHYNV GTA",
-    "category": "Ação",
-    "platforms": [
-      "Android"
-    ],
-    "cover": "",
-    "rating": 0,
-    "downloads": 0,
-    "description": "Projeto de GTA listado para Android.",
-    "android": "A confirmar",
-    "size": "A confirmar",
-    "apkUrl": "",
-    "dataUrl": "",
-    "altUrl": "",
-    "icon": "🎮"
+    "altUrl": ""
   }
 ]
