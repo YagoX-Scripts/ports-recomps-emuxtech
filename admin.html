@@ -95,11 +95,33 @@ $('coverFile').addEventListener('change',async e=>{
   try{coverData=await compress(f,900,.78);drawPreview('coverPreview',[coverData],true);}
   catch(err){status('Não foi possível abrir essa imagem.');}
 });
+
 $('shotFiles').addEventListener('change',async e=>{
   const files=[...e.target.files];
-  for(const f of files){if(shotData.length>=4)break;try{shotData.push(await compress(f,1200,.72));}catch(err){}}
+  if(!files.length)return;
+
+  let adicionadas=0;
+  let falhas=0;
+
+  for(const f of files){
+    if(shotData.length>=4)break;
+    try{
+      const imagem=await compress(f,1000,.68);
+      shotData.push(imagem);
+      adicionadas++;
+      drawPreview('shotPreview',shotData);
+    }catch(err){
+      falhas++;
+    }
+  }
+  e.target.value='';
   drawPreview('shotPreview',shotData);
-  if(files.length>4)status('O limite é de quatro imagens de gameplay.');
+
+  if(falhas){
+    status('Falha ao processar '+falhas+' imagem(ns). Tente imagens menores.');
+  }else{
+    status(adicionadas+' imagem(ns) adicionada(s). Total: '+shotData.length+'/4.');
+  }
 });
 function getForm(){return{
   id:$('id').value.trim().toLowerCase(),name:$('name').value.trim(),category:$('category').value,
