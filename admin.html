@@ -1,17 +1,175 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Painel ADM · YagoX Downloads</title><style>
 :root{--bg:#050c16;--panel:#0a1a2b;--line:#23415d;--cyan:#00c8ff;--muted:#a5bad2;--green:#15d878}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#102946,#050c16 58%);color:#f5f8ff;font:16px/1.5 system-ui,Arial,sans-serif}.wrap{max-width:850px;margin:auto;padding:24px 14px 60px}.top{display:flex;align-items:center;gap:14px;margin-bottom:20px}.logo{font-size:22px;font-weight:1000;font-style:italic;line-height:1}.logo span{display:block;color:var(--cyan);font-size:12px;letter-spacing:1px}.top a{margin-left:auto;color:#bdeaff}.panel{background:#0a1a2b;border:1px solid var(--line);border-radius:18px;padding:clamp(16px,4vw,28px);margin-bottom:18px;box-shadow:0 18px 50px #0003}.eyebrow{font-size:12px;color:var(--cyan);font-weight:800;letter-spacing:1.5px;text-transform:uppercase}h1{font-size:clamp(28px,6vw,40px);margin:6px 0 8px}h2{font-size:21px;margin:0 0 16px}.muted{color:var(--muted)}label{display:block;color:#c4d4e7;font-size:14px;margin:14px 0 6px}input,select,textarea{width:100%;border:1px solid #2a4967;border-radius:11px;background:#061321;color:#fff;padding:13px 14px;font:inherit;min-width:0}textarea{min-height:100px;resize:vertical}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.btn{border:0;border-radius:11px;background:var(--green);color:#032216;font-weight:900;padding:13px 16px;font:inherit;font-weight:900;cursor:pointer}.btn.secondary{background:#12304a;color:#e6f4ff;border:1px solid #315776}.btn.danger{background:#411b27;color:#ffc5ce;border:1px solid #763246}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.upload{border:1px dashed #3a6385;background:#071525;border-radius:13px;padding:16px;margin-top:8px}.upload input{border:0;background:transparent;padding:8px 0}.previews{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.preview{position:relative;border:1px solid #294b68;border-radius:12px;overflow:hidden;background:#10243a}.preview img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}.preview small{display:block;padding:6px 8px;color:#b9cee4}.coverpreview{max-width:170px}.coverpreview img{aspect-ratio:1}.remove{position:absolute;right:7px;top:7px;background:#3d1320;color:white;border:0;border-radius:8px;padding:5px 8px}.hint{font-size:13px;color:#9eb6ce;margin-top:7px}.status{border-radius:10px;padding:12px;background:#0b3028;border:1px solid #17664b;color:#a8f7d6;display:none;margin-top:14px;white-space:pre-wrap}.listitem{display:flex;align-items:center;gap:12px;border:1px solid #1e3a54;background:#071525;border-radius:12px;padding:10px;margin-top:9px}.listitem img{width:58px;height:58px;object-fit:cover;border-radius:8px}.listitem .grow{flex:1;min-width:0}.listitem strong{display:block;overflow-wrap:anywhere}.listitem small{color:var(--muted)}.note{border:1px solid #745a24;background:#2b2110;color:#f4dfa7;border-radius:12px;padding:13px;font-size:14px;margin:16px 0}.footer{font-size:12px;color:#7894b2;text-align:center;margin-top:20px}#loginGate{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:18px;background:radial-gradient(ellipse at top,#102946,#050c16 65%)}#loginGate .loginbox{width:min(100%,480px);background:#0a1a2b;border:1px solid #23415d;border-radius:20px;padding:24px;box-shadow:0 20px 80px #0008}#loginGate h1{font-size:30px}#loginGate .btn{width:100%;margin-top:12px}#loginGate .hint{margin-top:12px}body.locked{overflow:hidden}
 @media(max-width:550px){.two,.three{grid-template-columns:1fr}.top{align-items:flex-start}.previews{gap:8px}.actions .btn{width:100%}}
-</style></head><body><div id="loginGate"><div class="loginbox"><div class="logo">YAGOX<span>DOWNLOADS · ACESSO ADM</span></div><h1 id="loginTitle">Entrar no painel</h1><p class="muted" id="loginText">Digite sua senha local para abrir o gerenciador de jogos.</p><form id="loginForm"><label for="adminPassword">Senha do painel</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Digite sua senha" required><button class="btn" id="loginSubmit" type="submit">Entrar no painel</button></form><p class="hint" id="loginHint">A senha fica salva apenas neste navegador. Este bloqueio local não é autenticação real para um site público.</p><button class="btn secondary" id="resetLocalPassword" type="button" style="display:none">Criar nova senha neste navegador</button></div></div><script>document.body.classList.add('locked');const PASSKEY='yagox_admin_password_v3';const gate=document.getElementById('loginGate');const lf=document.getElementById('loginForm');const pw=document.getElementById('adminPassword');const lt=document.getElementById('loginTitle');const ltxt=document.getElementById('loginText');const submit=document.getElementById('loginSubmit');const reset=document.getElementById('resetLocalPassword');function setupGate(){const saved=localStorage.getItem(PASSKEY);if(!saved){lt.textContent='Criar senha do painel';ltxt.textContent='Crie uma senha local para evitar abrir o cadastro diretamente neste navegador.';submit.textContent='Salvar senha e entrar';pw.autocomplete='new-password';reset.style.display='none'}else{lt.textContent='Entrar no painel';ltxt.textContent='Digite sua senha local para abrir o gerenciador de jogos.';submit.textContent='Entrar no painel';pw.autocomplete='current-password';reset.style.display='block'}}lf.addEventListener('submit',e=>{e.preventDefault();const saved=localStorage.getItem(PASSKEY);if(!saved){if(pw.value.length<4){alert('Use uma senha com pelo menos 4 caracteres.');return}localStorage.setItem(PASSKEY,pw.value);gate.remove();document.body.classList.remove('locked')}else if(pw.value===saved){gate.remove();document.body.classList.remove('locked')}else{alert('Senha incorreta. Tente novamente.');pw.value='';pw.focus()}});reset.addEventListener('click',()=>{if(confirm('Apagar a senha local deste navegador e criar outra? Isso não apaga os jogos salvos.')){localStorage.removeItem(PASSKEY);pw.value='';setupGate()}});setupGate();</script><main class="wrap"><div class="top"><div class="logo">YAGOX<span>DOWNLOADS · PAINEL ADM</span></div><a href="index.html" target="_blank">Ver catálogo ↗</a></div><section class="panel"><div class="eyebrow">Gerenciador de jogos</div><h1>Cadastrar jogo</h1><p class="muted">Preencha os dados, escolha as imagens direto da galeria do celular e salve. Os links de APK, dados e alternativo são independentes.</p><div class="note"><b>Como publicar:</b> este painel guarda rascunhos neste navegador e exporta o arquivo <code>games.json</code>. Para atualizar o catálogo público do GitHub Pages, você ainda precisa enviar o arquivo exportado ao repositório. As imagens escolhidas ficam embutidas nesse JSON, então não precisa hospedar cada uma separadamente.</div><form id="form"><input id="editId" type="hidden"><h2>🎮 Informações do jogo</h2><label for="name">Nome do jogo *</label><input id="name" required placeholder="Ex.: Naruto Storm Generations"><div class="two"><div><label for="id">ID único (sem espaços) *</label><input id="id" required placeholder="naruto-storm-generations"></div><div><label for="category">Categoria</label><select id="category"><option>Aventura</option><option>Ação</option><option>Luta</option><option>Corrida</option><option>RPG</option><option>Emulador</option><option>Outros</option></select></div></div><label for="platforms">Plataformas (separe por vírgula)</label><input id="platforms" value="Android" placeholder="Android, PC"><div class="two"><div><label for="minAndroid">Android mínimo</label><input id="minAndroid" placeholder="Ex.: Android 10"></div><div><label for="size">Tamanho</label><input id="size" placeholder="Ex.: 4,2 GB"></div></div><div class="two"><div><label for="mode">Modo</label><input id="mode" placeholder="Offline / Online"></div><div><label for="language">Idioma</label><input id="language" placeholder="Português / Inglês"></div></div><label for="description">Descrição</label><textarea id="description" placeholder="Descreva o port, versão e observações importantes..."></textarea><h2 style="margin-top:26px">🖼️ Imagens do jogo</h2><label>Capa principal / ícone *</label><div class="upload"><input id="coverFile" type="file" accept="image/*"><div class="hint">Escolha uma imagem da galeria. A prévia aparece aqui.</div><div id="coverPreview" class="previews coverpreview"></div></div><label>Imagens de gameplay (até 4)</label><div class="upload"><input id="shotFiles" type="file" accept="image/*" multiple><div class="hint">Selecione até quatro capturas de tela. Selecione todas de uma vez ou adicione mais depois.</div><div id="shotPreview" class="previews"></div></div><h2 style="margin-top:26px">⬇️ Links de download</h2><label for="apkUrl">Download APK — URL</label><input id="apkUrl" type="url" placeholder="https://..."><label for="dataUrl">Download Dados — URL</label><input id="dataUrl" type="url" placeholder="https://..."><label for="altUrl">Download Alternativo — URL</label><input id="altUrl" type="url" placeholder="https://..."><div class="actions"><button class="btn" type="submit">＋ Salvar jogo</button><button class="btn secondary" type="button" id="reset">Limpar formulário</button></div><div id="status" class="status"></div></form></section><section class="panel"><h2>📚 Jogos cadastrados neste navegador</h2><div id="gameList" class="muted">Nenhum jogo salvo ainda.</div><div class="actions"><button id="export" class="btn">Exportar games.json</button><button id="importBtn" class="btn secondary">Importar games.json</button><input id="importFile" type="file" accept="application/json,.json" hidden></div><p class="hint">Depois de exportar, envie o arquivo games.json ao repositório do GitHub para publicar os jogos no site.</p></section><div class="footer">YagoX Downloads · Painel local para preparar o catálogo</div></main><script>
-const $=id=>document.getElementById(id);let games=[];let coverData='',shotData=[];const STORE='yagox_admin_games_v3';function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function status(msg){$('status').textContent=msg;$('status').style.display='block'}function readFile(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)})}async function compress(file,max=1400,quality=.82){if(!file.type.startsWith('image/'))throw Error('Escolha um arquivo de imagem.');const data=await readFile(file);const im=new Image();im.src=data;await new Promise((res,rej)=>{im.onload=res;im.onerror=rej});const scale=Math.min(1,max/Math.max(im.width,im.height));const c=document.createElement('canvas');c.width=Math.round(im.width*scale);c.height=Math.round(im.height*scale);c.getContext('2d').drawImage(im,0,0,c.width,c.height);return c.toDataURL('image/jpeg',quality)}function drawPreview(container,items,isCover=false){$(container).innerHTML=items.map((src,i)=>`<div class="preview">${isCover?'':`<button class="remove" type="button" data-remove="${i}">×</button>`}<img src="${src}" alt="Prévia"><small>${isCover?'Capa principal':'Imagem '+(i+1)}</small></div>`).join('');$(container).querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{shotData.splice(+b.dataset.remove,1);drawPreview('shotPreview',shotData)})} $('coverFile').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{coverData=await compress(f,900,.8);drawPreview('coverPreview',[coverData],true)}catch(err){status('Não foi possível abrir essa imagem.')}});$('shotFiles').addEventListener('change',async e=>{const files=[...e.target.files];for(const f of files){if(shotData.length>=4)break;try{shotData.push(await compress(f,1200,.78))}catch(err){}}drawPreview('shotPreview',shotData);if(files.length>4)status('O limite é de quatro imagens de gameplay.')});function getForm(){return{id:$('id').value.trim(),name:$('name').value.trim(),category:$('category').value,platforms:$('platforms').value.trim()||'Android',minAndroid:$('minAndroid').value.trim()||'A confirmar',size:$('size').value.trim()||'A confirmar',mode:$('mode').value.trim()||'A confirmar',language:$('language').value.trim()||'A confirmar',description:$('description').value.trim(),cover:coverData,screenshots:shotData,apkUrl:$('apkUrl').value.trim(),dataUrl:$('dataUrl').value.trim(),altUrl:$('altUrl').value.trim()}}function saveLocal(){try{localStorage.setItem(STORE,JSON.stringify(games))}catch(e){status('Aviso: armazenamento do navegador cheio. Exporte games.json com frequência.')}}function clearForm(){ $('form').reset();$('editId').value='';$('platforms').value='Android';coverData='';shotData=[];$('coverPreview').innerHTML='';$('shotPreview').innerHTML='';$('status').style.display='none'}$('id').addEventListener('input',()=>{if(!$('editId').value)$('id').value=$('id').value.toLowerCase().replace(/[^a-z0-9-]+/g,'-').replace(/^-|-$/g,'' )});$('name').addEventListener('input',()=>{if(!$('editId').value&&!$('id').dataset.touched)$('id').value=$('name').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')});$('id').addEventListener('change',()=>$('id').dataset.touched='1');$('form').addEventListener('submit',e=>{e.preventDefault();const g=getForm();if(!g.id||!g.name){status('Preencha nome e ID.');return}const existing=games.findIndex(x=>x.id===g.id);if(existing>=0&&$('editId').value!==g.id){status('Já existe um jogo com esse ID. Escolha outro ID.');return}if(existing>=0)games[existing]=g;else games.unshift(g);saveLocal();renderList();clearForm();status('Jogo salvo neste navegador. Para publicar, toque em “Exportar games.json” e envie o arquivo ao GitHub.')});$('reset').onclick=clearForm;function renderList(){$('gameList').innerHTML=games.length?games.map(g=>`<div class="listitem">${g.cover?`<img src="${g.cover}" alt="">`:'<div style="width:58px;height:58px;display:grid;place-items:center;background:#12304a;border-radius:8px">🎮</div>'}<div class="grow"><strong>${escapeHtml(g.name)}</strong><small>${escapeHtml(g.platforms)} · ${g.screenshots?.length||0} imagens</small></div><button class="btn secondary" data-edit="${escapeHtml(g.id)}" type="button">Editar</button><button class="btn danger" data-delete="${escapeHtml(g.id)}" type="button">×</button></div>`).join(''):'<p class="muted">Nenhum jogo salvo ainda.</p>';document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(b.dataset.edit));document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{games=games.filter(g=>g.id!==b.dataset.delete);saveLocal();renderList()})}function edit(id){const g=games.find(x=>x.id===id);if(!g)return;$('editId').value=g.id;['id','name','category','platforms','minAndroid','size','mode','language','description','apkUrl','dataUrl','altUrl'].forEach(k=>{if($(k))$(k).value=g[k]||''});coverData=g.cover||'';shotData=[...(g.screenshots||[])].slice(0,4);drawPreview('coverPreview',coverData?[coverData]:[],true);drawPreview('shotPreview',shotData);$('form').scrollIntoView({behavior:'smooth'});status('Editando '+g.name+'. Ao salvar, as alterações substituirão o cadastro existente.')}$('export').onclick=()=>{const blob=new Blob([JSON.stringify(games,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='games.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);status('Arquivo games.json exportado. Envie-o ao repositório do GitHub para publicar as alterações.')};$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(!Array.isArray(j))throw Error();games=j;saveLocal();renderList();status('Catálogo importado com sucesso.')}catch(err){status('Esse arquivo não parece ser um games.json válido.')}e.target.value=''};try{const old=localStorage.getItem(STORE);if(old)games=JSON.parse(old)}catch(e){}renderList();
-</script>
+</style></head><body><div id="loginGate"><div class="loginbox"><div class="logo">YAGOX<span>DOWNLOADS · ACESSO ADM</span></div><h1 id="loginTitle">Entrar no painel</h1><p class="muted" id="loginText">Entre com o e-mail e a senha da sua conta autorizada no Supabase.</p><form id="loginForm"><label for="adminEmail">E-mail administrativo</label><input id="adminEmail" type="email" autocomplete="username" placeholder="seuemail@exemplo.com" required><label for="adminPassword">Senha da conta Supabase</label><input id="adminPassword" type="password" autocomplete="current-password" placeholder="Digite sua senha" required><button class="btn" id="loginSubmit" type="submit">Entrar no painel</button></form><p class="hint" id="loginHint">O acesso é validado pelo Supabase. Só contas autorizadas podem alterar os jogos.</p></div></div><main class="wrap"><div class="top"><div class="logo">YAGOX<span>DOWNLOADS · PAINEL ADM</span></div><a href="index.html" target="_blank">Ver catálogo ↗</a></div><section class="panel"><div class="eyebrow">Gerenciador de jogos</div><h1>Cadastrar jogo</h1><p class="muted">Preencha os dados, escolha imagens da galeria e salve diretamente no Supabase. Os links de APK, dados e alternativo são independentes.</p><div class="note"><b>Como funciona:</b> os jogos são salvos diretamente no Supabase. Depois da configuração inicial, não será necessário reenviar o games.json ao GitHub para cada alteração. As imagens são comprimidas antes de serem guardadas.</div><form id="form"><input id="editId" type="hidden"><h2>🎮 Informações do jogo</h2><label for="name">Nome do jogo *</label><input id="name" required placeholder="Ex.: Naruto Storm Generations"><div class="two"><div><label for="id">ID único (sem espaços) *</label><input id="id" required placeholder="naruto-storm-generations"></div><div><label for="category">Categoria</label><select id="category"><option>Aventura</option><option>Ação</option><option>Luta</option><option>Corrida</option><option>RPG</option><option>Emulador</option><option>Outros</option></select></div></div><label for="platforms">Plataformas (separe por vírgula)</label><input id="platforms" value="Android" placeholder="Android, PC"><div class="two"><div><label for="minAndroid">Android mínimo</label><input id="minAndroid" placeholder="Ex.: Android 10"></div><div><label for="size">Tamanho</label><input id="size" placeholder="Ex.: 4,2 GB"></div></div><div class="two"><div><label for="mode">Modo</label><input id="mode" placeholder="Offline / Online"></div><div><label for="language">Idioma</label><input id="language" placeholder="Português / Inglês"></div></div><label for="description">Descrição</label><textarea id="description" placeholder="Descreva o port, versão e observações importantes..."></textarea><h2 style="margin-top:26px">🖼️ Imagens do jogo</h2><label>Capa principal / ícone *</label><div class="upload"><input id="coverFile" type="file" accept="image/*"><div class="hint">Escolha uma imagem da galeria. A prévia aparece aqui.</div><div id="coverPreview" class="previews coverpreview"></div></div><label>Imagens de gameplay (até 4)</label><div class="upload"><input id="shotFiles" type="file" accept="image/*" multiple><div class="hint">Selecione até quatro capturas de tela. Selecione todas de uma vez ou adicione mais depois.</div><div id="shotPreview" class="previews"></div></div><h2 style="margin-top:26px">⬇️ Links de download</h2><label for="apkUrl">Download APK — URL</label><input id="apkUrl" type="url" placeholder="https://..."><label for="dataUrl">Download Dados — URL</label><input id="dataUrl" type="url" placeholder="https://..."><label for="altUrl">Download Alternativo — URL</label><input id="altUrl" type="url" placeholder="https://..."><div class="actions"><button class="btn" type="submit">＋ Salvar jogo</button><button class="btn secondary" type="button" id="reset">Limpar formulário</button></div><div id="status" class="status"></div></form></section><section class="panel"><h2>📚 Jogos cadastrados no catálogo online</h2><div id="gameList" class="muted">Nenhum jogo salvo ainda.</div><div class="actions"><button id="importBtn" class="btn secondary">Importar jogos de um games.json</button><input id="importFile" type="file" accept="application/json,.json" hidden></div><p class="hint">A importação adiciona ou atualiza os jogos no banco. Ela não apaga jogos que já estejam no Supabase.</p></section><div class="footer">YagoX Downloads · Painel administrativo conectado ao Supabase</div></main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 <script>
-(function(){
- const KEY='yagox_admin_local_password';
- const gate=document.getElementById('loginGate'), editor=document.getElementById('adminEditor');
- const pass=document.getElementById('adminPassword'), btn=document.getElementById('loginButton'), label=document.getElementById('passwordLabel'), desc=document.getElementById('loginDescription'), msg=document.getElementById('loginMessage');
- function update(){let saved=null;try{saved=localStorage.getItem(KEY)}catch(e){} label.textContent=saved?'Senha do painel':'Crie sua senha local'; desc.textContent=saved?'Digite sua senha para abrir o gerenciador de jogos.':'Crie uma senha local para bloquear a abertura casual do painel neste navegador.';pass.placeholder=saved?'Digite sua senha':'Crie uma senha';btn.textContent=saved?'Entrar no painel':'Salvar senha e entrar';pass.autocomplete=saved?'current-password':'new-password'}
- function unlock(){let value=pass.value;if(!value){msg.textContent='Digite uma senha primeiro.';return}let saved=null;try{saved=localStorage.getItem(KEY)}catch(e){}if(!saved){try{localStorage.setItem(KEY,value)}catch(e){msg.textContent='Não foi possível salvar a senha neste navegador.';return}msg.textContent='Senha criada neste navegador.';openEditor();return}if(value!==saved){msg.textContent='Senha incorreta. Tente novamente.';return}openEditor()}
- function openEditor(){gate.hidden=true;editor.hidden=false;}
- btn.addEventListener('click',unlock);pass.addEventListener('keydown',e=>{if(e.key==='Enter')unlock()});update();
-})();
-</script></body></html>
+document.body.classList.add('locked');
+const $ = id => document.getElementById(id);
+const gate = $('loginGate');
+const loginForm = $('loginForm');
+const loginHint = $('loginHint');
+let supabaseClient = null;
+let games = [];
+let coverData = '';
+let shotData = [];
+let editingId = '';
+
+function escapeHtml(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function status(msg){$('status').textContent=msg;$('status').style.display='block';}
+function authStatus(msg){loginHint.textContent=msg;}
+function normalize(row){
+  return {
+    id: row.id, name: row.name || '', category: row.category || 'Aventura',
+    platforms: Array.isArray(row.platforms) ? row.platforms.join(', ') : (row.platforms || 'Android'),
+    minAndroid: row.min_android || row.minAndroid || 'A confirmar',
+    size: row.size || 'A confirmar', mode: row.mode || 'A confirmar',
+    language: row.language || 'A confirmar', description: row.description || '',
+    cover: row.cover_url || row.cover || '',
+    screenshots: Array.isArray(row.screenshots) ? row.screenshots.slice(0,4) : [],
+    apkUrl: row.apk_url || row.apkUrl || '', dataUrl: row.data_url || row.dataUrl || '',
+    altUrl: row.alt_url || row.altUrl || ''
+  };
+}
+function toRow(g){
+  return {
+    id:g.id, name:g.name, category:g.category || 'Aventura',
+    platforms:(g.platforms || 'Android').split(',').map(x=>x.trim()).filter(Boolean),
+    min_android:g.minAndroid || 'A confirmar', size:g.size || 'A confirmar',
+    mode:g.mode || 'A confirmar', language:g.language || 'A confirmar',
+    description:g.description || '', cover_url:g.cover || '',
+    screenshots:(g.screenshots || []).slice(0,4),
+    apk_url:g.apkUrl || '', data_url:g.dataUrl || '', alt_url:g.altUrl || '',
+    updated_at:new Date().toISOString()
+  };
+}
+async function connect(){
+  if(!window.supabase || !window.YAGOX_SUPABASE_URL ||
+     !window.YAGOX_SUPABASE_PUBLISHABLE_KEY ||
+     window.YAGOX_SUPABASE_PUBLISHABLE_KEY.includes('COLE_AQUI')){
+    authStatus('Falta configurar a publishable key em supabase-config.js. Não use uma chave secret ou service_role.');
+    $('loginSubmit').disabled=true; return;
+  }
+  supabaseClient=window.supabase.createClient(window.YAGOX_SUPABASE_URL,window.YAGOX_SUPABASE_PUBLISHABLE_KEY);
+  const {data:{session}}=await supabaseClient.auth.getSession();
+  if(session) await acceptSession(session);
+}
+async function acceptSession(session){
+  const {data:{user},error}=await supabaseClient.auth.getUser();
+  if(error || !user){authStatus('Sessão inválida. Entre novamente.');return;}
+  if(user.app_metadata?.is_admin !== true && user.app_metadata?.is_admin !== 'true'){
+    await supabaseClient.auth.signOut();
+    authStatus('Esta conta ainda não tem autorização administrativa. Confira app_metadata.is_admin no Supabase e entre novamente.');
+    return;
+  }
+  gate.style.display='none'; document.body.classList.remove('locked');
+  $('adminEmail').value=user.email || '';
+  await loadGames();
+}
+loginForm.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(!supabaseClient){authStatus('A conexão ainda não está configurada. Confira supabase-config.js.');return;}
+  $('loginSubmit').disabled=true; authStatus('Verificando acesso...');
+  const {data,error}=await supabaseClient.auth.signInWithPassword({email:$('adminEmail').value.trim(),password:$('adminPassword').value});
+  $('loginSubmit').disabled=false;
+  if(error){authStatus('Não foi possível entrar: '+error.message);return;}
+  await acceptSession(data.session);
+});
+function readFile(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file);});}
+async function compress(file,max=1400,quality=.8){
+  if(!file.type.startsWith('image/'))throw Error('Escolha um arquivo de imagem.');
+  const data=await readFile(file);const im=new Image();im.src=data;
+  await new Promise((res,rej)=>{im.onload=res;im.onerror=rej;});
+  const scale=Math.min(1,max/Math.max(im.width,im.height));
+  const c=document.createElement('canvas');c.width=Math.round(im.width*scale);c.height=Math.round(im.height*scale);
+  c.getContext('2d').drawImage(im,0,0,c.width,c.height);return c.toDataURL('image/jpeg',quality);
+}
+function drawPreview(container,items,isCover=false){
+  $(container).innerHTML=items.map((src,i)=>`<div class="preview">${isCover?'':`<button class="remove" type="button" data-remove="${i}">×</button>`}<img src="${src}" alt="Prévia"><small>${isCover?'Capa principal':'Imagem '+(i+1)}</small></div>`).join('');
+  $(container).querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{shotData.splice(+b.dataset.remove,1);drawPreview('shotPreview',shotData);});
+}
+$('coverFile').addEventListener('change',async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{coverData=await compress(f,900,.78);drawPreview('coverPreview',[coverData],true);}
+  catch(err){status('Não foi possível abrir essa imagem.');}
+});
+$('shotFiles').addEventListener('change',async e=>{
+  const files=[...e.target.files];
+  for(const f of files){if(shotData.length>=4)break;try{shotData.push(await compress(f,1200,.72));}catch(err){}}
+  drawPreview('shotPreview',shotData);
+  if(files.length>4)status('O limite é de quatro imagens de gameplay.');
+});
+function getForm(){return{
+  id:$('id').value.trim().toLowerCase(),name:$('name').value.trim(),category:$('category').value,
+  platforms:$('platforms').value.trim()||'Android',minAndroid:$('minAndroid').value.trim()||'A confirmar',
+  size:$('size').value.trim()||'A confirmar',mode:$('mode').value.trim()||'A confirmar',
+  language:$('language').value.trim()||'A confirmar',description:$('description').value.trim(),
+  cover:coverData,screenshots:shotData,apkUrl:$('apkUrl').value.trim(),dataUrl:$('dataUrl').value.trim(),altUrl:$('altUrl').value.trim()
+};}
+function clearForm(){
+  $('form').reset();$('editId').value='';editingId='';$('platforms').value='Android';
+  coverData='';shotData=[];$('coverPreview').innerHTML='';$('shotPreview').innerHTML='';
+}
+$('id').addEventListener('input',()=>{if(!editingId)$('id').value=$('id').value.toLowerCase().replace(/[^a-z0-9-]+/g,'-').replace(/^-|-$/g,'');});
+$('name').addEventListener('input',()=>{if(!editingId&&!$('id').dataset.touched)$('id').value=$('name').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');});
+$('id').addEventListener('change',()=>$('id').dataset.touched='1');
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();const g=getForm();
+  if(!g.id||!g.name){status('Preencha nome e ID.');return;}
+  if(!supabaseClient){status('Supabase não configurado.');return;}
+  const row=toRow(g);let result;
+  if(editingId){
+    result=await supabaseClient.from('games').update(row).eq('id',editingId);
+  }else{
+    result=await supabaseClient.from('games').insert(row);
+  }
+  if(result.error){status('Erro ao salvar: '+result.error.message);return;}
+  status('Jogo salvo no Supabase! O catálogo público poderá exibi-lo assim que atualizar.');
+  await loadGames();clearForm();
+});
+$('reset').onclick=clearForm;
+function renderList(){
+  $('gameList').innerHTML=games.length?games.map(g=>`<div class="listitem">${g.cover?`<img src="${escapeHtml(g.cover)}" alt="">`:'<div style="width:58px;height:58px;display:grid;place-items:center;background:#12304a;border-radius:8px">🎮</div>'}<div class="grow"><strong>${escapeHtml(g.name)}</strong><small>${escapeHtml(g.platforms)} · ${(g.screenshots||[]).length} imagens</small></div><button class="btn secondary" data-edit="${escapeHtml(g.id)}" type="button">Editar</button><button class="btn danger" data-delete="${escapeHtml(g.id)}" type="button">×</button></div>`).join(''):'<p class="muted">Nenhum jogo cadastrado no Supabase ainda.</p>';
+  $('gameList').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(b.dataset.edit));
+  $('gameList').querySelectorAll('[data-delete]').forEach(b=>b.onclick=async()=>{
+    const id=b.dataset.delete;if(!confirm('Excluir este jogo do catálogo?'))return;
+    const {error}=await supabaseClient.from('games').delete().eq('id',id);
+    if(error){status('Erro ao excluir: '+error.message);return;}
+    await loadGames();status('Jogo excluído do Supabase.');
+  });
+}
+async function loadGames(){
+  const {data,error}=await supabaseClient.from('games').select('*').order('created_at',{ascending:false});
+  if(error){status('Não foi possível carregar os jogos: '+error.message);return;}
+  games=(data||[]).map(normalize);renderList();
+}
+function edit(id){
+  const g=games.find(x=>x.id===id);if(!g)return;
+  editingId=g.id;$('editId').value=g.id;
+  ['id','name','category','platforms','minAndroid','size','mode','language','description','apkUrl','dataUrl','altUrl'].forEach(k=>{if($(k))$(k).value=g[k]||'';});
+  coverData=g.cover||'';shotData=[...(g.screenshots||[])].slice(0,4);
+  drawPreview('coverPreview',coverData?[coverData]:[],true);drawPreview('shotPreview',shotData);
+  $('form').scrollIntoView({behavior:'smooth'});status('Editando '+g.name+'. Salve para atualizar o cadastro online.');
+}
+$('importBtn').onclick=()=>$('importFile').click();
+$('importFile').onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{
+    const j=JSON.parse(await f.text());if(!Array.isArray(j))throw Error('Formato inválido');
+    if(!confirm('Importar '+j.length+' jogos? Os jogos com o mesmo ID serão atualizados; os outros serão mantidos.')){e.target.value='';return;}
+    for(const item of j){
+      const g=normalize(item);
+      if(!g.id||!g.name)continue;
+      const row=toRow(g);
+      const {error}=await supabaseClient.from('games').upsert(row,{onConflict:'id'});
+      if(error)throw error;
+    }
+    await loadGames();status('Importação concluída: '+j.length+' itens processados. Nenhum jogo foi apagado.');
+  }catch(err){status('Falha na importação: '+(err.message||'arquivo inválido'));}
+  e.target.value='';
+};
+connect().catch(e=>authStatus('Erro ao iniciar o Supabase: '+e.message));
+</script>
+</body></html>
