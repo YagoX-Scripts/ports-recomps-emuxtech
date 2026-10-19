@@ -1,27 +1,319 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>YagoX Downloads</title><style>
-:root{--bg:#050c16;--panel:#081727;--line:#18334c;--muted:#9fb5d0;--cyan:#00c8ff;--green:#13c75a;--blue:#0878e8;--orange:#f07800}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#102b4a 0,#050c16 48%);color:#f5f8ff;font:16px/1.5 system-ui,Arial,sans-serif}header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(16px,4vw,56px);background:#040b14ed;border-bottom:1px solid #17304a;position:sticky;top:0;z-index:3}.logo{font-weight:1000;font-style:italic;font-size:clamp(22px,3vw,34px);line-height:.9;letter-spacing:-1px}.logo span{display:block;color:var(--cyan);font-size:.55em;letter-spacing:1px}.nav{display:flex;gap:18px;color:#d6e5f9}.nav a{color:inherit;text-decoration:none}.wrap{max-width:1100px;margin:auto;padding:24px 16px 60px}.hero{border:1px solid #1b3c5d;border-radius:18px;padding:clamp(22px,5vw,48px);background:linear-gradient(115deg,#0b2139,#06111f 70%);overflow:hidden;position:relative}.hero:after{content:'YAGOX';position:absolute;right:-12px;bottom:-40px;font-size:clamp(90px,20vw,220px);font-weight:1000;color:#0b2941;opacity:.55;pointer-events:none}.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.04;margin:10px 0}.hero p{max-width:620px;color:#bfd0e6}.search{width:100%;margin-top:14px;padding:14px 16px;border-radius:12px;border:1px solid #25435f;background:#071321;color:white;font:inherit}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 14px}.sectionhead h2{margin:0}.tag{border:1px solid #21415d;color:#b9d5ef;padding:5px 10px;border-radius:99px;font-size:12px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}.load-more-wrap{text-align:center;margin:22px 0}.load-more{border:1px solid #10a4ff;background:linear-gradient(130deg,#087fe7,#0755ad);color:#fff;border-radius:12px;padding:12px 22px;font:inherit;font-weight:800;cursor:pointer}.load-more:disabled{opacity:.55;cursor:wait}.gamecard{background:#071523;border:1px solid #173751;border-radius:16px;overflow:hidden;cursor:pointer;transition:.18s}.gamecard:hover{transform:translateY(-3px);border-color:var(--cyan)}.cover{width:100%;aspect-ratio:16/9;object-fit:cover;background:#122b43}.cardbody{padding:14px}.cardbody h3{margin:0 0 7px}.card-description{margin:10px 0 6px;color:var(--muted);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;overflow-wrap:anywhere}.card-description.expanded{display:block;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible}.description-toggle{display:inline-block;margin:0 0 10px;padding:0;border:0;background:none;color:var(--cyan);font:inherit;font-size:13px;font-weight:800;cursor:pointer}.meta{display:flex;gap:7px;flex-wrap:wrap}.pill{background:#0b2a34;color:#6ff0bf;padding:4px 9px;border-radius:99px;font-size:12px}.pill.purple{background:#26183e;color:#d7b2ff}.muted{color:var(--muted)}.empty{padding:28px;text-align:center;border:1px dashed #29445f;border-radius:14px;color:#a9bdd4}.detail{margin-top:20px;background:#061321;border:1px solid #1b3a57;border-radius:18px;padding:clamp(16px,3vw,26px)}.detailtop{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:start}.detailcover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid #246087}.detail h2{margin:0 0 8px;font-size:clamp(24px,4vw,34px)}.info{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.info div{background:#081a2b;border:1px solid #183750;padding:12px;border-radius:12px}.info small{display:block;color:#93afd0}.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid #24435e;border-radius:12px;background:#12283c}.downloads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}.download{display:flex;align-items:center;gap:10px;padding:14px;border-radius:13px;color:white;text-decoration:none;font-weight:800;min-height:76px}.download small{display:block;font-weight:500;opacity:.9;font-size:12px}.apk{background:linear-gradient(130deg,#0a9c3c,#08762d);border:1px solid #19e66a}.data{background:linear-gradient(130deg,#087fe7,#0755ad);border:1px solid #10a4ff}.alt{background:linear-gradient(130deg,#f08000,#c65300);border:1px solid #ff9b2e}.download.disabled{opacity:.45;pointer-events:none;filter:grayscale(.6)}.notice{border:1px solid #a32c3a;border-radius:12px;padding:12px 14px;margin-top:16px;color:#ffb3ba;background:#220f18}.back{border:1px solid #2b4d6a;background:#0b2033;color:white;border-radius:10px;padding:9px 13px;font:inherit;cursor:pointer;margin-bottom:12px}footer{text-align:center;padding:24px;color:#8098b5;font-size:13px}
-.help-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin:24px 0}.help-card{background:#081727;border:1px solid #18334c;border-radius:16px;padding:16px;overflow:hidden}.help-card h2{font-size:19px;margin:0 0 12px}.help-video{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;display:block;background:#000}.help-btn{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:10px;background:#0878e8;color:white;font-weight:800;text-decoration:none}.help-btn.telegram{background:#168acb}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YagoX Downloads</title>
+<style>
+:root{--bg:#050c16;--panel:#081727;--line:#18334c;--muted:#9fb5d0;--cyan:#00c8ff;--green:#13c75a;--blue:#0878e8;--orange:#f07800}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#102b4a 0,#050c16 48%);color:#f5f8ff;font:16px/1.5 system-ui,Arial,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px clamp(16px,4vw,56px);background:#040b14ed;border-bottom:1px solid #17304a;position:sticky;top:0;z-index:3}
+.logo{font-weight:1000;font-style:italic;font-size:clamp(22px,3vw,34px);line-height:.9;letter-spacing:-1px}
+.logo span{display:block;color:var(--cyan);font-size:.55em;letter-spacing:1px}
+.nav{display:flex;gap:18px;color:#d6e5f9}
+.nav a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:auto;padding:24px 16px 60px}
+.hero{border:1px solid #1b3c5d;border-radius:18px;padding:clamp(22px,5vw,48px);background:linear-gradient(115deg,#0b2139,#06111f 70%);overflow:hidden;position:relative}
+.hero:after{content:'YAGOX';position:absolute;right:-12px;bottom:-40px;font-size:clamp(90px,20vw,220px);font-weight:1000;color:#0b2941;opacity:.55;pointer-events:none}
+.eyebrow{color:var(--cyan);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:12px}
+.hero h1{font-size:clamp(32px,6vw,56px);line-height:1.04;margin:10px 0}
+.hero p{max-width:620px;color:#bfd0e6}
+.search{width:100%;margin-top:14px;padding:14px 16px;border-radius:12px;border:1px solid #25435f;background:#071321;color:white;font:inherit}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:26px 0 14px}
+.sectionhead h2{margin:0}
+.tag{border:1px solid #21415d;color:#b9d5ef;padding:5px 10px;border-radius:99px;font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.load-more-wrap{text-align:center;margin:22px 0}
+.load-more{border:1px solid #10a4ff;background:linear-gradient(130deg,#087fe7,#0755ad);color:#fff;border-radius:12px;padding:12px 22px;font:inherit;font-weight:800;cursor:pointer}
+.load-more:disabled{opacity:.55;cursor:wait}
+.gamecard{background:#071523;border:1px solid #173751;border-radius:16px;overflow:hidden;cursor:pointer;transition:.18s}
+.gamecard:hover{transform:translateY(-3px);border-color:var(--cyan)}
+.cover{width:100%;aspect-ratio:16/9;object-fit:cover;background:#122b43}
+.cardbody{padding:14px}
+.cardbody h3{margin:0 0 7px}
+.card-description{margin:10px 0 6px;color:var(--muted);display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;overflow-wrap:anywhere}
+.card-description.expanded{display:block;-webkit-line-clamp:unset;line-clamp:unset;overflow:visible}
+.description-toggle{display:inline-block;margin:0 0 10px;padding:0;border:0;background:none;color:var(--cyan);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.meta{display:flex;gap:7px;flex-wrap:wrap}
+.pill{background:#0b2a34;color:#6ff0bf;padding:4px 9px;border-radius:99px;font-size:12px}
+.pill.purple{background:#26183e;color:#d7b2ff}
+.muted{color:var(--muted)}
+.empty{padding:28px;text-align:center;border:1px dashed #29445f;border-radius:14px;color:#a9bdd4}
+.detail{margin-top:20px;background:#061321;border:1px solid #1b3a57;border-radius:18px;padding:clamp(16px,3vw,26px)}
+.detailtop{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:start}
+.detailcover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;border:1px solid #246087}
+.detail h2{margin:0 0 8px;font-size:clamp(24px,4vw,34px)}
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.info div{background:#081a2b;border:1px solid #183750;padding:12px;border-radius:12px}
+.info small{display:block;color:#93afd0}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.gallery img{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid #24435e;border-radius:12px;background:#12283c}
+.downloads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.download{display:flex;align-items:center;gap:10px;padding:14px;border-radius:13px;color:white;text-decoration:none;font-weight:800;min-height:76px}
+.download small{display:block;font-weight:500;opacity:.9;font-size:12px}
+.apk{background:linear-gradient(130deg,#0a9c3c,#08762d);border:1px solid #19e66a}
+.data{background:linear-gradient(130deg,#087fe7,#0755ad);border:1px solid #10a4ff}
+.alt{background:linear-gradient(130deg,#f08000,#c65300);border:1px solid #ff9b2e}
+.download.disabled{opacity:.45;pointer-events:none;filter:grayscale(.6)}
+.notice{border:1px solid #a32c3a;border-radius:12px;padding:12px 14px;margin-top:16px;color:#ffb3ba;background:#220f18}
+.back{border:1px solid #2b4d6a;background:#0b2033;color:white;border-radius:10px;padding:9px 13px;font:inherit;cursor:pointer;margin-bottom:12px}
+footer{text-align:center;padding:24px;color:#8098b5;font-size:13px}
+.help-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin:24px 0}
+.help-card{background:#081727;border:1px solid #18334c;border-radius:16px;padding:16px;overflow:hidden}
+.help-card h2{font-size:19px;margin:0 0 12px}
+.help-video{width:100%;aspect-ratio:16/9;border:0;border-radius:10px;display:block;background:#000}
+.help-btn{display:block;text-align:center;margin-top:12px;padding:12px;border-radius:10px;background:#0878e8;color:white;font-weight:800;text-decoration:none}
+.help-btn.telegram{background:#168acb}
 @media(max-width:650px){header{padding:14px 16px}.nav{gap:10px;font-size:13px}.detailtop{grid-template-columns:90px 1fr;gap:12px}.info{grid-template-columns:repeat(2,1fr)}.downloads{grid-template-columns:1fr}.download{min-height:64px}.gallery{gap:8px}.help-grid{grid-template-columns:1fr}}
-</style></head><body><header><div class="logo">YAGOX<span>DOWNLOADS</span></div><nav class="nav"><a href="#inicio">⌂ Início</a><a href="#jogos">🎮 Jogos</a><a href="#jogos">▦ Categorias</a></nav></header><main class="wrap"><section class="hero" id="inicio"><div class="eyebrow">Seu portal gamer</div><h1>Seus jogos.<br><span style="color:var(--cyan)">Seu próximo nível.</span></h1><p>Ports para Android, jogos de PC e recomps em um só lugar. Veja imagens, confira os detalhes e escolha seu link de download.</p><input id="search" class="search" placeholder="⌕  Buscar jogo..." aria-label="Buscar jogo"></section>
-<section class="help-grid" aria-label="Ajuda e comunidade">
-  <div class="help-card"><h2>▶ Como passar pelo encurtador</h2><p class="muted">Assista ao tutorial para aprender a liberar os links de download.</p><iframe class="help-video" src="https://www.youtube-nocookie.com/embed/6XZtRPS5t0E" title="Tutorial para passar pelo encurtador" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><a class="help-btn" href="https://youtu.be/6XZtRPS5t0E" target="_blank" rel="noopener noreferrer">Assistir no YouTube ↗</a></div>
-  <div class="help-card"><h2>✈ Grupo do Telegram</h2><p class="muted">Entre na comunidade para acompanhar novidades, jogos e atualizações.</p><a class="help-btn telegram" href="https://t.me/+n7ncP0tredhiZDgx" target="_blank" rel="noopener noreferrer">Abrir Telegram →</a><p class="muted" style="font-size:12px;margin-top:12px">Link de convite para entrar na comunidade.</p></div>
-</section>
-<div class="sectionhead" id="jogos"><h2>Jogos disponíveis</h2><span class="tag" id="count">0 jogos</span></div><div id="cards" class="cards"></div><div class="load-more-wrap"><button id="loadMore" class="load-more" type="button" hidden>Carregar mais jogos</button></div><section id="detail"></section></main><footer>YagoX Downloads · Confira sempre os requisitos e a compatibilidade antes de instalar.</footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script>
-let games=[];let page=0;const pageSize=12;let hasMore=true;let loading=false;let searchTimer=null;let currentQuery='';let totalCount=0;let client=null;const $=id=>document.getElementById(id);
-function safe(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function normalize(row){return {id:row.id,name:row.name||'',category:row.category||'Aventura',platforms:Array.isArray(row.platforms)?row.platforms.join(', '):(row.platforms||'Android'),minAndroid:row.min_android||'A confirmar',size:row.size||'A confirmar',mode:row.mode||'A confirmar',language:row.language||'A confirmar',description:row.description||'',cover:row.cover_url||'',screenshots:Array.isArray(row.screenshots)?row.screenshots:[],apkUrl:row.apk_url||'',dataUrl:row.data_url||'',altUrl:row.alt_url||''};}
-function render(){const q=currentQuery.toLowerCase();const list=games.filter(g=>(g.name+' '+g.category+' '+g.platforms).toLowerCase().includes(q));$('count').textContent=q?`${list.length} resultado(s) carregado(s)`:`${totalCount} jogo(s)`;$('cards').innerHTML=list.length?list.map(g=>`<article class="gamecard" data-id="${safe(g.id)}">${g.cover?`<img class="cover" src="${safe(g.cover)}" alt="${safe(g.name)}" loading="lazy">`:`<div class="cover" style="display:grid;place-items:center;font-size:44px">🎮</div>`}<div class="cardbody"><h3>${safe(g.name)}</h3><div class="meta"><span class="pill">${safe(g.platforms||'Plataforma')}</span><span class="pill purple">${safe(g.category||'Jogos')}</span></div><p class="card-description" data-description>${safe(g.description||'')}</p>${(g.description||'').length>180?`<button class="description-toggle" type="button" aria-expanded="false">Ver mais</button>`:''}<span style="color:var(--cyan);font-weight:700">Ver detalhes →</span></div></article>`).join(''):'<div class="empty">Nenhum jogo encontrado nesta parte do catálogo.</div>';document.querySelectorAll('.gamecard').forEach(c=>{c.onclick=()=>show(c.dataset.id);const toggle=c.querySelector('.description-toggle');if(toggle)toggle.onclick=e=>{e.stopPropagation();const desc=c.querySelector('[data-description]');const expanded=desc.classList.toggle('expanded');toggle.textContent=expanded?'Ver menos':'Ver mais';toggle.setAttribute('aria-expanded',String(expanded));};});$('loadMore').hidden=!hasMore||Boolean(q);}
-async function fetchPage(reset=false){if(loading||!client)return;loading=true;const btn=$('loadMore');btn.disabled=true;btn.textContent='Carregando...';if(reset){page=0;games=[];hasMore=true;$('cards').innerHTML='';}
- let query=client.from('games').select('*',{count:'exact'}).order('created_at',{ascending:false});
- if(currentQuery.trim()){const term=currentQuery.trim().replace(/[,%()]/g,' ');query=query.or(`name.ilike.%${term}%,category.ilike.%${term}%`);}
- const from=page*pageSize;const {data,error,count}=await query.range(from,from+pageSize-1);
- if(error){$('cards').innerHTML='<div class="empty">Não foi possível carregar o catálogo. Confira a configuração do Supabase.</div>';hasMore=false;}
- else{const rows=(data||[]).map(normalize);games=reset?rows:games.concat(rows);page++;totalCount=count??games.length;hasMore=rows.length===pageSize&&games.length<totalCount;render();}
- loading=false;btn.disabled=false;btn.textContent='Carregar mais jogos';btn.hidden=!hasMore||Boolean(currentQuery.trim());}
-function show(id){const g=games.find(x=>String(x.id)===String(id));if(!g)return;const shots=(g.screenshots||[]).filter(Boolean).slice(0,4);$('detail').innerHTML=`<section class="detail"><button class="back" onclick="document.getElementById('detail').innerHTML='';window.scrollTo({top:0,behavior:'smooth'})">← Voltar ao catálogo</button><div class="detailtop">${g.cover?`<img class="detailcover" src="${safe(g.cover)}" alt="${safe(g.name)}">`:`<div class="detailcover" style="display:grid;place-items:center;font-size:44px">🎮</div>`}<div><h2>${safe(g.name)}</h2><div class="meta"><span class="pill">${safe(g.platforms||'Android')}</span><span class="pill purple">${safe(g.category||'Aventura')}</span></div><p class="muted">${safe(g.description||'')}</p></div></div><div class="info"><div><small>Android mínimo</small><b>${safe(g.minAndroid||'A confirmar')}</b></div><div><small>Tamanho</small><b>${safe(g.size||'A confirmar')}</b></div><div><small>Modo</small><b>${safe(g.mode||'A confirmar')}</b></div><div><small>Idioma</small><b>${safe(g.language||'A confirmar')}</b></div></div>${shots.length?`<h2 style="font-size:24px;margin:18px 0 12px">▧ Imagens do jogo (${shots.length})</h2><div class="gallery">${shots.map((s,i)=>`<img src="${safe(s)}" alt="Imagem de gameplay ${i+1}" loading="lazy">`).join('')}</div>`:''}<h2 style="font-size:24px;margin:22px 0 0">↓ Downloads</h2><div class="downloads">${dl(g.apkUrl,'Download APK','Arquivo de instalação do jogo','apk','♟')}${dl(g.dataUrl,'Download Dados','Arquivos adicionais necessários','data','▰')}${dl(g.altUrl,'Download Alternativo','Outro link para baixar o jogo','alt','↗')}</div><div class="notice"><b>ⓘ Importante</b><br><span style="color:#e0c6ce">Leia a descrição e verifique a compatibilidade antes de baixar.</span></div></section>`;$('detail').scrollIntoView({behavior:'smooth',block:'start'});}
-function dl(url,title,sub,cls,ico){return `<a class="download ${cls} ${url?'':'disabled'}" ${url?`href="${safe(url)}" target="_blank" rel="noopener noreferrer"`:''}><span style="font-size:25px">${ico}</span><span>${title}<small>${url?sub:'Link ainda não cadastrado'}</small></span><span style="margin-left:auto">↓</span></a>`;}
-async function load(){if(!window.supabase||!window.YAGOX_SUPABASE_PUBLISHABLE_KEY||window.YAGOX_SUPABASE_PUBLISHABLE_KEY.includes('COLE_AQUI')){$('cards').innerHTML='<div class="empty">O catálogo precisa ser configurado com a chave pública do Supabase.</div>';return;}client=window.supabase.createClient(window.YAGOX_SUPABASE_URL,window.YAGOX_SUPABASE_PUBLISHABLE_KEY);await fetchPage(true);}
-$('loadMore').addEventListener('click',()=>fetchPage(false));$('search').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{currentQuery=$('search').value;fetchPage(true);},350);});load();
-</script></body></html>
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">YAGOX<span>DOWNLOADS</span></div>
+  <nav class="nav"><a href="#inicio">⌂ Início</a><a href="#jogos">🎮 Jogos</a><a href="#jogos">▦ Categorias</a></nav>
+</header>
+<main class="wrap">
+  <section class="hero" id="inicio">
+    <div class="eyebrow">Seu portal gamer</div>
+    <h1>Seus jogos.<br><span style="color:var(--cyan)">Seu próximo nível.</span></h1>
+    <p>Ports para Android, jogos de PC e recomps em um só lugar. Veja imagens, confira os detalhes e escolha seu link de download.</p>
+    <input id="search" class="search" placeholder="⌕  Buscar jogo..." aria-label="Buscar jogo">
+  </section>
+  <section class="help-grid" aria-label="Ajuda e comunidade">
+    <div class="help-card">
+      <h2>▶ Como passar pelo encurtador</h2>
+      <p class="muted">Assista ao tutorial para aprender a liberar os links de download.</p>
+      <iframe class="help-video" src="https://www.youtube-nocookie.com/embed/6XZtRPS5t0E" title="Tutorial para passar pelo encurtador" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <a class="help-btn" href="https://youtu.be/6XZtRPS5t0E" target="_blank" rel="noopener noreferrer">Assistir no YouTube ↗</a>
+    </div>
+    <div class="help-card">
+      <h2>✈ Grupo do Telegram</h2>
+      <p class="muted">Entre na comunidade para acompanhar novidades, jogos e atualizações.</p>
+      <a class="help-btn telegram" href="https://t.me/+n7ncP0tredhiZDgx" target="_blank" rel="noopener noreferrer">Abrir Telegram →</a>
+      <p class="muted" style="font-size:12px;margin-top:12px">Link de convite para entrar na comunidade.</p>
+    </div>
+  </section>
+  <div class="sectionhead" id="jogos"><h2>Jogos disponíveis</h2><span class="tag" id="count">Carregando jogos...</span></div>
+  <div id="cards" class="cards"></div>
+  <div class="load-more-wrap"><button id="loadMore" class="load-more" type="button" hidden>Carregar mais jogos</button></div>
+  <section id="detail"></section>
+</main>
+<footer>YagoX Downloads · Confira sempre os requisitos e a compatibilidade antes de instalar.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script>
+let games=[];
+let page=0;
+const pageSize=12;
+let hasMore=true;
+let loading=false;
+let searchTimer=null;
+let currentQuery='';
+let totalCount=0;
+let client=null;
+const $=id=>document.getElementById(id);
+
+function safe(s=''){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function normalize(row){
+  return {
+    id:row.id,
+    name:row.name||'',
+    category:row.category||'Aventura',
+    platforms:Array.isArray(row.platforms)?row.platforms.join(', '):(row.platforms||'Android'),
+    minAndroid:row.min_android||'A confirmar',
+    size:row.size||'A confirmar',
+    mode:row.mode||'A confirmar',
+    language:row.language||'A confirmar',
+    description:row.description||'',
+    cover:row.cover_url||'',
+    screenshots:Array.isArray(row.screenshots)?row.screenshots:[],
+    apkUrl:row.apk_url||'',
+    dataUrl:row.data_url||'',
+    altUrl:row.alt_url||''
+  };
+}
+
+function render(){
+  const q=currentQuery.toLowerCase();
+  const list=games.filter(g=>
+    (g.name+' '+g.category+' '+g.platforms).toLowerCase().includes(q)
+  );
+
+  $('count').textContent=q
+    ? `${list.length} resultado(s) carregado(s)`
+    : `${games.length}${hasMore?'+':''} jogo(s) carregado(s)`;
+
+  $('cards').innerHTML=list.length
+    ? list.map(g=>`<article class="gamecard" data-id="${safe(g.id)}">
+      ${g.cover
+        ? `<img class="cover" src="${safe(g.cover)}" alt="${safe(g.name)}" loading="lazy">`
+        : `<div class="cover" style="display:grid;place-items:center;font-size:44px">🎮</div>`}
+      <div class="cardbody">
+        <h3>${safe(g.name)}</h3>
+        <div class="meta">
+          <span class="pill">${safe(g.platforms||'Plataforma')}</span>
+          <span class="pill purple">${safe(g.category||'Jogos')}</span>
+        </div>
+        <p class="card-description" data-description>${safe(g.description||'')}</p>
+        ${(g.description||'').length>180
+          ? `<button class="description-toggle" type="button" aria-expanded="false">Ver mais</button>`
+          : ''}
+        <span style="color:var(--cyan);font-weight:700">Ver detalhes →</span>
+      </div>
+    </article>`).join('')
+    : '<div class="empty">Nenhum jogo encontrado nesta parte do catálogo.</div>';
+
+  document.querySelectorAll('.gamecard').forEach(c=>{
+    c.onclick=()=>show(c.dataset.id);
+    const toggle=c.querySelector('.description-toggle');
+    if(toggle){
+      toggle.onclick=e=>{
+        e.stopPropagation();
+        const desc=c.querySelector('[data-description]');
+        const expanded=desc.classList.toggle('expanded');
+        toggle.textContent=expanded?'Ver menos':'Ver mais';
+        toggle.setAttribute('aria-expanded',String(expanded));
+      };
+    }
+  });
+
+  $('loadMore').hidden=!hasMore||Boolean(q);
+}
+
+async function fetchPage(reset=false){
+  if(loading||!client)return;
+
+  loading=true;
+  const btn=$('loadMore');
+  btn.disabled=true;
+  btn.textContent='Carregando...';
+
+  if(reset){
+    page=0;
+    games=[];
+    hasMore=true;
+    totalCount=0;
+    $('cards').innerHTML='';
+  }
+
+  try{
+    let query=client
+      .from('games')
+      .select('id,name,category,platforms,min_android,size,mode,language,description,cover_url,screenshots,apk_url,data_url,alt_url')
+      .order('created_at',{ascending:false});
+
+    if(currentQuery.trim()){
+      const term=currentQuery.trim().replace(/[,%()]/g,' ');
+      query=query.or(`name.ilike.%${term}%,category.ilike.%${term}%`);
+    }
+
+    const from=page*pageSize;
+    // Um registro extra permite detectar se existe outra página sem pedir count exato.
+    const {data,error}=await query.range(from,from+pageSize);
+
+    if(error){
+      console.error('Erro do Supabase:',error);
+      $('cards').innerHTML='<div class="empty">Não foi possível carregar o catálogo. Confira a configuração do Supabase.</div>';
+      hasMore=false;
+      return;
+    }
+
+    const rows=data||[];
+    const visibleRows=rows.slice(0,pageSize);
+    hasMore=rows.length>pageSize;
+
+    games=reset
+      ? visibleRows.map(normalize)
+      : games.concat(visibleRows.map(normalize));
+
+    page++;
+    totalCount=games.length;
+    render();
+
+  }catch(error){
+    console.error('Erro ao carregar jogos:',error);
+    $('cards').innerHTML='<div class="empty">Falha de conexão. Tente novamente.</div>';
+    hasMore=false;
+  }finally{
+    loading=false;
+    btn.disabled=false;
+    btn.textContent='Carregar mais jogos';
+    btn.hidden=!hasMore||Boolean(currentQuery.trim());
+  }
+}
+
+function show(id){
+  const g=games.find(x=>String(x.id)===String(id));
+  if(!g)return;
+  const shots=(g.screenshots||[]).filter(Boolean).slice(0,4);
+
+  $('detail').innerHTML=`<section class="detail">
+    <button class="back" onclick="document.getElementById('detail').innerHTML='';window.scrollTo({top:0,behavior:'smooth'})">← Voltar ao catálogo</button>
+    <div class="detailtop">
+      ${g.cover
+        ? `<img class="detailcover" src="${safe(g.cover)}" alt="${safe(g.name)}">`
+        : `<div class="detailcover" style="display:grid;place-items:center;font-size:44px">🎮</div>`}
+      <div>
+        <h2>${safe(g.name)}</h2>
+        <div class="meta"><span class="pill">${safe(g.platforms||'Android')}</span><span class="pill purple">${safe(g.category||'Aventura')}</span></div>
+        <p class="muted">${safe(g.description||'')}</p>
+      </div>
+    </div>
+    <div class="info">
+      <div><small>Android mínimo</small><b>${safe(g.minAndroid||'A confirmar')}</b></div>
+      <div><small>Tamanho</small><b>${safe(g.size||'A confirmar')}</b></div>
+      <div><small>Modo</small><b>${safe(g.mode||'A confirmar')}</b></div>
+      <div><small>Idioma</small><b>${safe(g.language||'A confirmar')}</b></div>
+    </div>
+    ${shots.length?`<h2 style="font-size:24px;margin:18px 0 12px">▧ Imagens do jogo (${shots.length})</h2><div class="gallery">${shots.map((s,i)=>`<img src="${safe(s)}" alt="Imagem de gameplay ${i+1}" loading="lazy">`).join('')}</div>`:''}
+    <h2 style="font-size:24px;margin:22px 0 0">↓ Downloads</h2>
+    <div class="downloads">
+      ${dl(g.apkUrl,'Download APK','Arquivo de instalação do jogo','apk','♟')}
+      ${dl(g.dataUrl,'Download Dados','Arquivos adicionais necessários','data','▰')}
+      ${dl(g.altUrl,'Download Alternativo','Outro link para baixar o jogo','alt','↗')}
+    </div>
+    <div class="notice"><b>ⓘ Importante</b><br><span style="color:#e0c6ce">Leia a descrição e verifique a compatibilidade antes de baixar.</span></div>
+  </section>`;
+
+  $('detail').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function dl(url,title,sub,cls,ico){
+  return `<a class="download ${cls} ${url?'':'disabled'}" ${url?`href="${safe(url)}" target="_blank" rel="noopener noreferrer"`:''}>
+    <span style="font-size:25px">${ico}</span>
+    <span>${title}<small>${url?sub:'Link ainda não cadastrado'}</small></span>
+    <span style="margin-left:auto">↓</span>
+  </a>`;
+}
+
+async function load(){
+  if(!window.supabase||!window.YAGOX_SUPABASE_PUBLISHABLE_KEY||window.YAGOX_SUPABASE_PUBLISHABLE_KEY.includes('COLE_AQUI')){
+    $('cards').innerHTML='<div class="empty">O catálogo precisa ser configurado com a chave pública do Supabase.</div>';
+    return;
+  }
+
+  client=window.supabase.createClient(
+    window.YAGOX_SUPABASE_URL,
+    window.YAGOX_SUPABASE_PUBLISHABLE_KEY
+  );
+  await fetchPage(true);
+}
+
+$('loadMore').addEventListener('click',()=>fetchPage(false));
+$('search').addEventListener('input',()=>{
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(()=>{
+    currentQuery=$('search').value;
+    fetchPage(true);
+  },350);
+});
+
+load();
+</script>
+</body>
+</html>
