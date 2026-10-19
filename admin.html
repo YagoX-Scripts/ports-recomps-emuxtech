@@ -204,4 +204,49 @@ async function edit(id){
   drawPreview('shotPreview',shotData);
   $('form').scrollIntoView({behavior:'smooth'});status('Editando '+g.name+'. Salve para atualizar o cadastro online.');
 }
-$('migrateImagesBtn').o
+$('migrateImagesBtn').onclick=async()=>{
+  if(!supabaseClient)return status('Supabase não configurado.');
+  if(!confirm('Converter capas e capturas antigas em Base64 para URLs do Storage? Isso envia imagens uma vez. Não feche esta página durante a migração.'))return;
+  const button=$('migrateImagesBtn');button.disabled=true;
+  let converted=0,failed=0;
+  try{
+    status('Lendo imagens antigas do banco...');
+    const {data:rows,error}=await supabaseClient.from('games').select('id,cover_url,screenshots');
+    if(error)throw error;
+    for(let i=0;i<(rows||[]).length;i++){
+      const row=rows[i];let cover=row.cover_url||'';const shots=Array.isArray(row.screenshots)?row.screenshots.slice(0,4):[];let changed=false;
+      try{
+        if(isDataImage(cover)){cover=await uploadImageToStorage(cover,row.id,'cover-migration',i);changed=true;}
+        const newShots=[];
+        for(let j=0;j<shots.length;j++){
+          if(isDataImage(shots[j])){newShots.push(await uploadImageToStorage(shots[j],row.id,'shot-migration',j));changed=true;}else newShots.push(shots[j]);
+        }
+        if(changed){const {error:updateError}=await supabaseClient.from('games').update({cover_url:cover,screenshots:newShots}).eq('id',row.id);if(updateError)throw updateError;converted++;}
+        status(`Migração: ${i+1}/${rows.length} jogos verificados; ${converted} atualizados.`);
+      }catch(err){failed++;status(`Falha no jogo ${row.id}: ${err.message||err}. Continuando...`);}
+    }
+    await loadGames();status(`Migração concluída: ${converted} jogos atualizados; ${failed} falhas.`);
+  }catch(err){status('Falha na migração: '+(err.message||err));}
+  finally{button.disabled=false;}
+};
+$('importBtn').onclick=()=>$('importFile').click();
+$('importFile').onchange=async e=>{
+  const f=e.target.files[0];if(!f)return;
+  try{
+    const j=JSON.parse(await f.text());if(!Array.isArray(j))throw Error('Formato inválido');
+    if(!confirm('Importar '+j.length+' jogos? Os jogos com o mesmo ID serão atualizados; os outros serão mantidos.')){e.target.value='';return;}
+    for(const item of j){
+      const g=normalize(item);
+      if(!g.id||!g.name)continue;
+      const prepared=await prepareImagesForStorage(g);
+      const row=toRow(prepared);
+      const {error}=await supabaseClient.from('games').upsert(row,{onConflict:'id'});
+      if(error)throw error;
+    }
+    await loadGames();status('Importação concluída: '+j.length+' itens processados. Nenhum jogo foi apagado.');
+  }catch(err){status('Falha na importação: '+(err.message||'arquivo inválido'));}
+  e.target.value='';
+};
+connect().catch(e=>authStatus('Erro ao iniciar o Supabase: '+e.message));
+</script>
+</body></html>
